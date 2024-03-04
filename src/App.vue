@@ -4,6 +4,7 @@
   import AppHead from './components/AppHead.vue'
   import CardContainer from './components/CardContainer.vue'
 
+
   export default{
     components:{
       AppHead,
@@ -32,6 +33,7 @@
 
 <template>
   <AppHead></AppHead>
+  
 
   <CardContainer>
     

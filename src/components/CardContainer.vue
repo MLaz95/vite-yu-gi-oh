@@ -1,16 +1,14 @@
 <script>
     import {store} from '../store.js'
-    import AppPagination from './AppPagination.vue'
     import CardItem from './CardItem.vue'
-
-
+    import AppPagination from './AppPagination.vue'
 
     export default{
         name: 'CardContainer',
 
         components:{
-            AppPagination,
             CardItem,
+            AppPagination,
         },
         
         data(){
@@ -23,24 +21,30 @@
 
 <template>
     <div class="container">
-        <AppPagination></AppPagination>
-        <CardItem
-            v-for="card in store.cards"
-        ></CardItem>
+        
+
+        <div class="card-container">
+            <AppPagination></AppPagination>
+
+            <CardItem
+                v-for="(cardObject, index) in store.cards"
+                :card="store.cards[index]"
+            ></CardItem>
+
+        </div>
+        
     </div>
 </template>
 
 <style lang="scss">
     @use '../styles/variables.scss' as *;
 
-    .container{
-        height: 100vh;
-        // test
+    .card-container{
         display: flex;
         flex-flow: row wrap;
+        align-items: stretch;
         gap: $cardGap;
-        max-width: 1680px;
-        margin: 125px auto 0;
+
         padding: 70px;
         background-color: white;
     }
