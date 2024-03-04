@@ -2,10 +2,12 @@
   import axios from 'axios';
   import {store} from './store.js'
   import AppHead from './components/AppHead.vue'
+  import AppPagination from './components/AppPagination.vue'
 
   export default{
     components:{
       AppHead,
+      AppPagination,
     },
 
     data(){
@@ -32,7 +34,7 @@
   <AppHead></AppHead>
 
   <div class="container">
-    test
+    <AppPagination></AppPagination>
   </div>
 
 
@@ -47,6 +49,7 @@
     // test
     max-width: 1680px;
     margin: 125px auto 0;
+    padding: 70px;
     background-color: white;
   }
 
