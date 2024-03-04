@@ -15,9 +15,11 @@
 <template>
     <div id="page-bar">
         <div>
+            <!-- displays how many cards are currently in the page -->
             Found {{store.cards.length}} cards
         </div>
         <div>
+            <!-- displays how many pages there are in the database with current page-size -->
             Page 1 - {{ store.meta.total_pages }}
         </div>
     </div>

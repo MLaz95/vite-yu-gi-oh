@@ -24,8 +24,10 @@
         
 
         <div class="card-container">
+            <!-- top bar component with number of hits and page position -->
             <AppPagination></AppPagination>
 
+            <!-- makes a card for each card in store -->
             <CardItem
                 v-for="(cardObject, index) in store.cards"
                 :card="store.cards[index]"
