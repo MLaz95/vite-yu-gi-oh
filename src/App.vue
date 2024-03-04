@@ -1,5 +1,5 @@
 <script setup>
-  import AppHead from './components/navbar.vue'
+  import AppHead from './components/AppHead.vue'
 
 </script>
 
@@ -14,4 +14,4 @@
 
 
 
-</style>
+</style>./components/AppHead.vue
