@@ -14,7 +14,12 @@
 
 <template>
     <div id="page-bar">
-        Found {{store.cards.length}} cards
+        <div>
+            Found {{store.cards.length}} cards
+        </div>
+        <div>
+            Page 1 - {{ store.meta.total_pages }}
+        </div>
     </div>
 </template>
 
@@ -28,5 +33,8 @@
         font-weight: bold;
         color: white;
         background-color: $secondary-color;
+
+        display: flex;
+        justify-content: space-between;
     }
 </style>
