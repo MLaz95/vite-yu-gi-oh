@@ -1,7 +1,7 @@
 <script>
-export default{
-    name: 'AppHead',
-}
+    export default{
+        name: 'AppHead',
+    }
 
 </script>
 
