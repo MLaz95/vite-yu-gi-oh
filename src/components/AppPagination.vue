@@ -19,9 +19,10 @@
 </template>
 
 <style lang="scss">
-    @use '../styles/palette.scss' as *;
+    @use '../styles/variables.scss' as *;
 
     #page-bar{
+        width: 100%;
         padding: 30px;
         font-size: 18px;
         font-weight: bold;
