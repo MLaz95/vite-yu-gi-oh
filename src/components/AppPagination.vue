@@ -20,7 +20,7 @@
         </div>
         <div>
             <!-- displays how many pages there are in the database with current page-size -->
-            Page 1 of {{ store.meta.total_pages }}
+            Page {{ store.meta.total_pages - store.meta.pages_remaining + 1 }} <span v-if="store.meta.total_pages > 0">of {{ store.meta.total_pages + 1 }}</span>
         </div>
     </div>
 </template>

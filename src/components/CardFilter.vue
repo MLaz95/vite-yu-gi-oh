@@ -27,13 +27,41 @@
             >{{ currentArchetype.archetype_name }}</option>
         </select>
 
+        <div>
+            <button @click="$emit('prev')">Prev</button>
+            <button @click="$emit('next')">Next</button>
+        </div>
+
     </div>
     
 </template>
 
 <style lang="scss">
+    @use '../styles/variables.scss' as *;
+
     .filter-container{
         padding: 30px;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+
+        button{
+            width: 50px;
+            height: 50px;
+            margin: 0 0.5rem;
+            border-radius: 50%;
+            border: none;
+
+            cursor: pointer;
+            font-size: 1rem;
+            color: white;
+            background-color: $secondary-color;
+            transition: transform 0.3s;
+
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
     }
 
     #card-filter{

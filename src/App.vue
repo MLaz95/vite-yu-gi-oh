@@ -21,6 +21,7 @@
           // boolean to check when the loading screen needs to fade
           isLoading: true,
           archetypeList: '',
+          currentOffset: 0
       }
     },    
 
@@ -48,17 +49,39 @@
     },
 
     methods: {
-      filterCardList(){
-        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0&archetype=' + this.store.filterTarget).then(res => {
+      callCards(){
+        axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=${this.currentOffset}&archetype=${this.store.filterTarget}`).then(res => {
           this.store.cards = res.data.data;
           this.store.meta = res.data.meta;
         }).catch(err => {
-          axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0').then(res => {
+          axios.get(`https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=${this.currentOffset}`).then(res => {
             this.store.cards = res.data.data;
             this.store.meta = res.data.meta;
           })
         })
-      }
+      },
+
+      filterCardList(){
+        this.currentOffset = 0;
+        this.callCards();
+      },
+
+      prevPage(){
+        if(this.currentOffset >= 40){
+          this.currentOffset = this.currentOffset - 40;
+          this.callCards();
+        }else{
+          this.currentOffset = 0;
+        }
+      },
+
+      nextPage(){
+        if(this.store.meta.pages_remaining > 0){
+          this.currentOffset += 40;
+          this.callCards();
+        }
+        
+      },
     }
   }
 
@@ -72,7 +95,12 @@
   <!-- rest of the page is only displayed after loading is done -->
   <main v-if="!isLoading">
     <AppHead></AppHead>
-    <CardFilter :archetypeList="archetypeList" @filter="filterCardList()"></CardFilter>
+    <CardFilter
+      :archetypeList="archetypeList"
+      @filter="filterCardList()"
+      @prev="prevPage()"
+      @next="nextPage()"
+    ></CardFilter>
     <CardContainer></CardContainer>
   </main>
 </template>
