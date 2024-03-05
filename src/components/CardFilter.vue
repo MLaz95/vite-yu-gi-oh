@@ -20,6 +20,7 @@
     <div class="container filter-container">
         
         <select name="archetypes" id="card-filter" @change="$emit('filter')" v-model="store.filterTarget">
+            <option value="">All</option>
             <option
                 v-for="currentArchetype in archetypeList"
                 :value="currentArchetype.archetype_name"

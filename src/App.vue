@@ -52,9 +52,11 @@
         axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0&archetype=' + this.store.filterTarget).then(res => {
           this.store.cards = res.data.data;
           this.store.meta = res.data.meta;
-          console.log(this.store.filterTarget)
         }).catch(err => {
-          console.log(err)
+          axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0').then(res => {
+            this.store.cards = res.data.data;
+            this.store.meta = res.data.meta;
+          })
         })
       }
     }
