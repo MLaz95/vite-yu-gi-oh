@@ -14,7 +14,7 @@
         <img :src="card.card_images[0].image_url_small" alt="">
         <div class="card-info">
             <h2>{{ card.name }}</h2>
-            <h3>{{ card.race }}</h3>
+            <h3>{{ card.archetype }}</h3>
         </div>
         
     </div>

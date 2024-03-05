@@ -1,18 +1,29 @@
 <script>
+    import {store} from '../store.js'
+
     export default{
         name: 'CardFilter',
 
         props: {
             archetypeList: Array,
-        }
+        },
+
+        data(){
+            return{
+                store,
+            }
+        },   
     }
 </script>
 
 <template>
     <div class="container filter-container">
         
-        <select name="archetypes" id="card-filter">
-            <option v-for="currentArchetype in archetypeList" :value="currentArchetype.archetype_name">{{ currentArchetype.archetype_name }}</option>
+        <select name="archetypes" id="card-filter" @change="$emit('filter')" v-model="store.filterTarget">
+            <option
+                v-for="currentArchetype in archetypeList"
+                :value="currentArchetype.archetype_name"
+            >{{ currentArchetype.archetype_name }}</option>
         </select>
 
     </div>

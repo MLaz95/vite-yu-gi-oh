@@ -18,7 +18,6 @@
     data(){
       return{
           store,
-
           // boolean to check when the loading screen needs to fade
           isLoading: true,
           archetypeList: '',
@@ -46,6 +45,18 @@
       setTimeout(() => {
         this.isLoading = false;
       }, 1000);
+    },
+
+    methods: {
+      filterCardList(){
+        axios.get('https://db.ygoprodeck.com/api/v7/cardinfo.php?num=40&offset=0&archetype=' + this.store.filterTarget).then(res => {
+          this.store.cards = res.data.data;
+          this.store.meta = res.data.meta;
+          console.log(this.store.filterTarget)
+        }).catch(err => {
+          console.log(err)
+        })
+      }
     }
   }
 
@@ -59,7 +70,7 @@
   <!-- rest of the page is only displayed after loading is done -->
   <main v-if="!isLoading">
     <AppHead></AppHead>
-    <CardFilter :archetypeList="archetypeList"></CardFilter>
+    <CardFilter :archetypeList="archetypeList" @filter="filterCardList()"></CardFilter>
     <CardContainer></CardContainer>
   </main>
 </template>
