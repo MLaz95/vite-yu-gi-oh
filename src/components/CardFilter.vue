@@ -1,6 +1,10 @@
 <script>
     export default{
         name: 'CardFilter',
+
+        props: {
+            archetypeList: Array,
+        }
     }
 </script>
 
@@ -8,9 +12,7 @@
     <div class="container filter-container">
         
         <select name="archetypes" id="card-filter">
-            <option value="alien">Alien</option>
-            <option value="infernoble arms">Infernoble Arms</option>
-            <option value="noble knight">Noble Knight</option>
+            <option v-for="currentArchetype in archetypeList" :value="currentArchetype.archetype_name">{{ currentArchetype.archetype_name }}</option>
         </select>
 
     </div>
@@ -19,7 +21,7 @@
 
 <style lang="scss">
     .filter-container{
-        padding: 60px 30px;
+        padding: 30px;
     }
 
     #card-filter{
